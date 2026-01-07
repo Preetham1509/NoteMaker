@@ -1,0 +1,17 @@
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Note
+
+def note_home(request):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        Note.objects.create(title=title, content=content)
+        return redirect('note_home')
+    
+    notes = Note.objects.all().order_by('-created_at')
+    return render(request, 'notes/index.html', {'notes': notes})
+
+def delete_note(request, note_id):
+    note = get_object_or_404(Note, id=note_id)
+    note.delete()
+    return redirect('note_home')
