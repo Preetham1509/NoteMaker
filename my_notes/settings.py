@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-x2(xpgz3_zve=bhb#8uc&nj%1w!6pt+d*x9-bjlulksj)!+!sa
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['notemaster.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
