@@ -15,3 +15,13 @@ def delete_note(request, note_id):
     note = get_object_or_404(Note, id=note_id)
     note.delete()
     return redirect('note_home')
+def edit_note(request, note_id):
+    note = get_object_or_404(Note, id=note_id)
+
+    if request.method == "POST":
+        note.title = request.POST.get('title')
+        note.content = request.POST.get('content')
+        note.save()  
+        return redirect('note_home')
+
+    return render(request, 'notes/edit_note.html', {'note': note})
